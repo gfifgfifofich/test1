@@ -12,7 +12,7 @@ glow_blend_mode = 0
 [node name="Node2D" type="Node2D"]
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 194, 139 )
+position = Vector2( -66, 269 )
 scale = Vector2( 6.9375, 4.75 )
 texture = ExtResource( 1 )
 
