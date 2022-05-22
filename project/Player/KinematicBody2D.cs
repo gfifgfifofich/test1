@@ -3,14 +3,19 @@ using System;
 
 public class KinematicBody2D : Godot.KinematicBody2D
 {
-	public int currentHealth, maxHealth;
-	
-	private float playerSpeed = 3.5f;
+	public float currentHealth, maxHealth;
+	public float damage,firerate;
+	public float playerSpeed;
+
 	private Vector2 playerVelocity = new Vector2();
+	private const float dashCooldown = 1f;
 	
 	public override void _Ready()
 	{
-		maxHealth = 100; currentHealth = maxHealth;
+		damage = 10f;
+		firerate = 1f;
+		playerSpeed = 3.5f;
+		maxHealth = 100f; currentHealth = maxHealth;
 	}
 	public override void _Process(float delta)
 	{
