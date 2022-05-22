@@ -3,7 +3,7 @@ using System;
 
 public class KinematicBody2D : Godot.KinematicBody2D
 {
-	public int playerSpeed = 100;
+	public float playerSpeed = 3.5f;
 	public Vector2 playerVelocity = new Vector2();
 	
 	public override void _Process(float delta)
@@ -15,7 +15,7 @@ public class KinematicBody2D : Godot.KinematicBody2D
 		if (Input.IsActionPressed("ui_down")) playerVelocity.y += 1;
 		if (Input.IsActionPressed("ui_up")) playerVelocity.y -= 1;
 
-		playerVelocity = playerVelocity.Normalized() * playerSpeed;
+		playerVelocity = playerVelocity.Normalized() * playerSpeed / delta;
 		playerVelocity = MoveAndSlide(playerVelocity);
 	
 	}  
