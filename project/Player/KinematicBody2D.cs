@@ -3,9 +3,15 @@ using System;
 
 public class KinematicBody2D : Godot.KinematicBody2D
 {
-	public float playerSpeed = 3.5f;
-	public Vector2 playerVelocity = new Vector2();
+	public int currentHealth, maxHealth;
 	
+	private float playerSpeed = 3.5f;
+	private Vector2 playerVelocity = new Vector2();
+	
+	public override void _Ready()
+	{
+		maxHealth = 100; currentHealth = maxHealth;
+	}
 	public override void _Process(float delta)
 	{
 		playerVelocity = new Vector2();
@@ -17,6 +23,8 @@ public class KinematicBody2D : Godot.KinematicBody2D
 
 		playerVelocity = playerVelocity.Normalized() * playerSpeed / delta;
 		playerVelocity = MoveAndSlide(playerVelocity);
+
+		if(currentHealth > maxHealth) currentHealth = maxHealth;
 	
 	}  
 }
