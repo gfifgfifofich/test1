@@ -3,7 +3,7 @@ using System;
 
 public class WeaponAnchor : KinematicBody2D
 {
-    public float rotationSpeed = 20;
+    public float rotationSpeed = 10;
     protected Vector2 mousePosition;
     public override void _Process(float delta)
     {
