@@ -1,12 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://arena/arena.gd" type="Script" id=1]
+[ext_resource path="res://arena/enwarning.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 488, 19 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 384, 32.5 )
 
 [node name="arena" type="Node2D"]
 script = ExtResource( 1 )
@@ -64,3 +73,128 @@ scale = Vector2( 1, 1.95619 )
 z_index = 101
 color = Color( 0.415686, 0.415686, 0.415686, 1 )
 polygon = PoolVector2Array( -480, -192, -480, 200, -496, 200, -496, -192 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="walls"]
+position = Vector2( 8, 232 )
+rotation = 1.5708
+scale = Vector2( 1, 1.95619 )
+z_index = 101
+color = Color( 0.415686, 0.415686, 0.415686, 1 )
+polygon = PoolVector2Array( -480, -192, -480, 200, -496, 200, -496, -192 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[node name="enwarnings" type="Node2D" parent="."]
+
+[node name="enwarning" type="Area2D" parent="enwarnings"]
+position = Vector2( -516.149, 0 )
+rotation = 1.5708
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enwarnings/enwarning"]
+shape = SubResource( 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning"]
+position = Vector2( 3.70895e-06, 84.851 )
+scale = Vector2( 1.5, 1.5 )
+color = Color( 0.8, 0, 0, 1 )
+polygon = PoolVector2Array( 24, -84.149, -24, -84.149, -24, -132.149, 24, -132.149 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning/Polygon2D"]
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -16, -100.149, -16, -116.149, 8, -108.149 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="enwarnings/enwarning/Polygon2D"]
+position = Vector2( -18.563, -68.431 )
+rotation = 0.785398
+scale = Vector2( 1, 0.5 )
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
+
+[node name="enwarning2" type="Area2D" parent="enwarnings"]
+position = Vector2( 512.431, 0 )
+rotation = -1.5708
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enwarnings/enwarning2"]
+shape = SubResource( 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning2"]
+position = Vector2( 1.52588e-05, -236.431 )
+rotation = 3.14159
+scale = Vector2( 1.5, 1.5 )
+color = Color( 0.8, 0, 0, 1 )
+polygon = PoolVector2Array( 24, -84.149, -24, -84.149, -24, -132.149, 24, -132.149 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning2/Polygon2D"]
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -16, -100.149, -16, -116.149, 8, -108.149 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="enwarnings/enwarning2/Polygon2D"]
+position = Vector2( -18.563, -68.431 )
+rotation = 0.785398
+scale = Vector2( 1, 0.5 )
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
+
+[node name="enwarning3" type="Area2D" parent="enwarnings"]
+position = Vector2( 0, 282 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enwarnings/enwarning3"]
+shape = SubResource( 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning3"]
+position = Vector2( -162, -81 )
+rotation = 1.5708
+scale = Vector2( 1.5, 1.5 )
+color = Color( 0.8, 0, 0, 1 )
+polygon = PoolVector2Array( 24, -84.149, -24, -84.149, -24, -132.149, 24, -132.149 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning3/Polygon2D"]
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -16, -100.149, -16, -116.149, 8, -108.149 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="enwarnings/enwarning3/Polygon2D"]
+position = Vector2( -18.563, -68.431 )
+rotation = 0.785398
+scale = Vector2( 1, 0.5 )
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
+
+[node name="enwarning4" type="Area2D" parent="enwarnings"]
+position = Vector2( -2, -283 )
+rotation = 3.14159
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enwarnings/enwarning4"]
+visible = false
+shape = SubResource( 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning4"]
+position = Vector2( 160, -79 )
+rotation = -1.5708
+scale = Vector2( 1.5, 1.5 )
+color = Color( 0.8, 0, 0, 1 )
+polygon = PoolVector2Array( 24, -84.149, -24, -84.149, -24, -132.149, 24, -132.149 )
+
+[node name="Polygon2D" type="Polygon2D" parent="enwarnings/enwarning4/Polygon2D"]
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -16, -100.149, -16, -116.149, 8, -108.149 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="enwarnings/enwarning4/Polygon2D"]
+position = Vector2( -18.563, -68.431 )
+rotation = 0.785398
+scale = Vector2( 1, 0.5 )
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
+
+[connection signal="body_entered" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_entered"]
+[connection signal="body_exited" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_exited"]
+[connection signal="body_entered" from="enwarnings/enwarning2" to="enwarnings/enwarning2" method="_on_enwarning_body_entered"]
+[connection signal="body_exited" from="enwarnings/enwarning2" to="enwarnings/enwarning2" method="_on_enwarning_body_exited"]
+[connection signal="body_entered" from="enwarnings/enwarning3" to="enwarnings/enwarning3" method="_on_enwarning_body_entered"]
+[connection signal="body_exited" from="enwarnings/enwarning3" to="enwarnings/enwarning3" method="_on_enwarning_body_exited"]
+[connection signal="body_entered" from="enwarnings/enwarning4" to="enwarnings/enwarning4" method="_on_enwarning_body_entered"]
+[connection signal="body_exited" from="enwarnings/enwarning4" to="enwarnings/enwarning4" method="_on_enwarning_body_exited"]
