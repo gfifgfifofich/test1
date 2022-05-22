@@ -1,13 +1,15 @@
 using Godot;
 using System;
 
-public class WeaponAnchor : KinematicBody2D
+public class WeaponAnchor : Sprite
 {
-    public float rotationSpeed = 10;
+    
+    
     protected Vector2 mousePosition;
     public override void _Process(float delta)
     {
+    
        mousePosition = GetLocalMousePosition();
-       Rotation = mousePosition.Angle();
+       Rotation += mousePosition.Angle();
     }
 }
