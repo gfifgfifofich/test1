@@ -1,6 +1,10 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Main/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Main/main.gd" type="Script" id=2]
 
 [node name="main" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0.529412, 0.501961, 0.501961, 1 )
@@ -9,27 +13,31 @@ invert_border = 128.8
 polygon = PoolVector2Array( 974, 550, 974, 50, 50, 50, 50, 550 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 144.0
-margin_top = 72.0
-margin_right = 390.0
-margin_bottom = 86.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 48.0
+margin_top = 96.0
+margin_right = 1208.0
+margin_bottom = 175.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 1 )
 text = "Welcome to [GAMENAME]!!! WoW PoG"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 448.0
-margin_top = 264.0
-margin_right = 491.0
-margin_bottom = 284.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 432.0
+margin_top = 256.0
+margin_right = 593.0
+margin_bottom = 341.0
+custom_fonts/font = ExtResource( 1 )
 text = "Start"
 flat = true
 
 [node name="Button3" type="Button" parent="."]
 margin_left = 448.0
-margin_top = 392.0
-margin_right = 491.0
-margin_bottom = 412.0
-rect_scale = Vector2( 3, 3 )
+margin_top = 432.0
+margin_right = 576.0
+margin_bottom = 517.0
+custom_fonts/font = ExtResource( 1 )
 text = "Exit"
 flat = true
+
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="Button3" to="." method="_on_Button3_button_up"]
