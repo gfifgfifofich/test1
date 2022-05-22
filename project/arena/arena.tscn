@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 current = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-z_index = 3752
+z_index = 100
 color = Color( 0.529412, 0.501961, 0.501961, 1 )
 invert_enable = true
 invert_border = 167.1
@@ -45,3 +45,22 @@ position = Vector2( 0, -269 )
 rotation = -3.14159
 shape = SubResource( 2 )
 one_way_collision = true
+
+[node name="Polygon2D" type="Polygon2D" parent="walls"]
+z_index = 101
+color = Color( 0.415686, 0.415686, 0.415686, 1 )
+polygon = PoolVector2Array( -480, -192, -480, 200, -496, 200, -496, -192 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="walls"]
+position = Vector2( 976, 0 )
+z_index = 101
+color = Color( 0.415686, 0.415686, 0.415686, 1 )
+polygon = PoolVector2Array( -480, -192, -480, 200, -496, 200, -496, -192 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="walls"]
+position = Vector2( 7.91949, 744 )
+rotation = 1.5708
+scale = Vector2( 1, 1.95619 )
+z_index = 101
+color = Color( 0.415686, 0.415686, 0.415686, 1 )
+polygon = PoolVector2Array( -480, -192, -480, 200, -496, 200, -496, -192 )
