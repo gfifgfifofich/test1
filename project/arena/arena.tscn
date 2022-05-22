@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://arena/arena.gd" type="Script" id=1]
 [ext_resource path="res://arena/enwarning.gd" type="Script" id=2]
+[ext_resource path="res://Main/font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 16 )
@@ -190,6 +191,14 @@ scale = Vector2( 1, 0.5 )
 color = Color( 0.129412, 0.129412, 0.129412, 1 )
 polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
 
+[node name="Button" type="Button" parent="."]
+margin_left = 49.0
+margin_top = -245.0
+margin_right = 473.0
+margin_bottom = -160.0
+custom_fonts/font = ExtResource( 3 )
+text = "Kill All enemies"
+
 [connection signal="body_entered" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_entered"]
 [connection signal="body_exited" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_exited"]
 [connection signal="body_entered" from="enwarnings/enwarning2" to="enwarnings/enwarning2" method="_on_enwarning_body_entered"]
@@ -198,3 +207,4 @@ polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147
 [connection signal="body_exited" from="enwarnings/enwarning3" to="enwarnings/enwarning3" method="_on_enwarning_body_exited"]
 [connection signal="body_entered" from="enwarnings/enwarning4" to="enwarnings/enwarning4" method="_on_enwarning_body_entered"]
 [connection signal="body_exited" from="enwarnings/enwarning4" to="enwarnings/enwarning4" method="_on_enwarning_body_exited"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

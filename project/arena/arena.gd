@@ -2,6 +2,14 @@ extends Node2D
 
 var en1 = preload("res://enemies/en1/en1.tscn")
 
+var enemiesArray = [[en1,1]] # [[enemy.tscn, cost]]
+
+var enemiesCount = 5
+var enemiesPoints = 5
+var wave = 1
+
+
+
 var t = 0
 func spawninst(inst):
 	add_child(inst)
@@ -22,10 +30,30 @@ func SpawnEnemy(en):
 			eninst.position = Vector2(500,ry)
 	spawninst(eninst)
 
+func nextWave():
+	wave+=1
+	enemiesCount += 5
+	enemiesPoints = enemiesCount+((enemiesCount/10)*wave) 
 
 func _physics_process(delta):
 	t+=delta
-	if t>0.1:
+	
+	
+	if t>1.0/(enemiesCount+((enemiesCount/10)*wave))  and enemiesPoints >=1:
+		var i =rand_range(0,enemiesArray.size())
+		var spawntrys = 0
+		while enemiesArray[i][1] >enemiesPoints && spawntrys<10:# Randoming untill cost of choosed enemy< points 
+			i =rand_range(0,enemiesArray.size())
+			spawntrys+=1
+		if spawntrys>=10: # if we havent finded in 10 tries - spawn red blob wich cost is 1
+			i=0
+		enemiesPoints -= enemiesArray[i][1]
 		SpawnEnemy(en1)
 		t=0
-	pass
+	if enemiesPoints <= 1 and get_tree().get_nodes_in_group("enemies").empty():
+		nextWave()
+
+
+func _on_Button_button_up(): # KILL ALL ENEMIES
+	for en in get_tree().get_nodes_in_group("enemies"):
+		en.queue_free()
