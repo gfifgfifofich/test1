@@ -10,7 +10,7 @@
 extents = Vector2( 64, 36 )
 
 [sub_resource type="LineShape2D" id=3]
-normal = Vector2( 0.0212176, -0.999775 )
+normal = Vector2( -0.557786, -0.829985 )
 
 [node name="Node2D" type="Node2D"]
 
