@@ -1,0 +1,35 @@
+[gd_scene format=2]
+
+[node name="main" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.529412, 0.501961, 0.501961, 1 )
+invert_enable = true
+invert_border = 128.8
+polygon = PoolVector2Array( 974, 550, 974, 50, 50, 50, 50, 550 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 144.0
+margin_top = 72.0
+margin_right = 390.0
+margin_bottom = 86.0
+rect_scale = Vector2( 3, 3 )
+text = "Welcome to [GAMENAME]!!! WoW PoG"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 264.0
+margin_right = 491.0
+margin_bottom = 284.0
+rect_scale = Vector2( 3, 3 )
+text = "Start"
+flat = true
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 392.0
+margin_right = 491.0
+margin_bottom = 412.0
+rect_scale = Vector2( 3, 3 )
+text = "Exit"
+flat = true
