@@ -6,8 +6,8 @@
 [sub_resource type="Environment" id=1]
 background_mode = 4
 glow_enabled = true
-glow_intensity = 0.85
-glow_strength = 1.21
+glow_intensity = 2.42
+glow_strength = 1.3
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 glow_high_quality = true
@@ -18,11 +18,12 @@ position = Vector2( 78, 102 )
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="Maxresdefault" type="Sprite" parent="Sprite"]
-position = Vector2( 210, 9 )
+position = Vector2( 214, 890 )
 texture = ExtResource( 2 )
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 108, 430 )
+position = Vector2( 212, -129 )
+scale = Vector2( 14.25, 14.1094 )
 texture = ExtResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
