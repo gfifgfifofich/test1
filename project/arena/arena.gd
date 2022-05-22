@@ -1,6 +1,6 @@
 extends Node2D
 
-var en1 = preload("res://enemies/en1/en1.tscn")
+var en1 = preload("res://bullet/bullet.tscn")
 
 var enemiesArray = [[en1,1]] # [[enemy.tscn, cost]]
 
@@ -20,14 +20,15 @@ func SpawnEnemy(en):
 	var ry = rand_range(-150,150)
 	if randf()>0.5:
 		if randf()>0.5:
-			eninst.position = Vector2(rx,-350)
+			eninst.position = Vector2(rx,-35)
 		else:
-			eninst.position = Vector2(rx,350)
+			eninst.position = Vector2(rx,35)
 	else:
 		if randf()>0.5:
-			eninst.position = Vector2(-500,ry)
+			eninst.position = Vector2(-50,ry)
 		else:
-			eninst.position = Vector2(500,ry)
+			eninst.position = Vector2(50,ry)
+	eninst.velocity = -eninst.position.normalized() * 50
 	spawninst(eninst)
 
 func nextWave():
