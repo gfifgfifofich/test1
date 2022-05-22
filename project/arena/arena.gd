@@ -57,3 +57,5 @@ func _physics_process(delta):
 func _on_Button_button_up(): # KILL ALL ENEMIES
 	for en in get_tree().get_nodes_in_group("enemies"):
 		en.queue_free()
+
+
