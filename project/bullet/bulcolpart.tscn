@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://bullet/shotparticles.gd" type="Script" id=1]
+[ext_resource path="res://bullet/bulcolpart.tres" type="Material" id=2]
+
+[node name="Particles2D" type="Particles2D"]
+modulate = Color( 1.2, 1, 1, 1 )
+z_index = 2665
+emitting = false
+one_shot = true
+speed_scale = 6.0
+explosiveness = 1.0
+local_coords = false
+process_material = ExtResource( 2 )
+script = ExtResource( 1 )

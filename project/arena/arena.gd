@@ -2,7 +2,7 @@ extends Node2D
 
 var en1 = preload("res://enemies/en1/en1.tscn")
 
-var enemiesArray = [[en1,1]] # [[enemy.tscn, cost]]
+var enemiesArray = [[en1,5]] # [[enemy.tscn, cost]]
 
 var enemiesCount = 5
 var enemiesPoints = 5
@@ -62,3 +62,4 @@ func _physics_process(delta):
 func _on_Button_button_up(): # KILL ALL ENEMIES
 	for en in get_tree().get_nodes_in_group("enemies"):
 		en.queue_free()
+

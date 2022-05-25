@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://bullet/explode.gd" type="Script" id=1]
+[ext_resource path="res://bullet/explodepart.tres" type="Material" id=2]
+[ext_resource path="res://white.png" type="Texture" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=7]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 12.5
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+uniform sampler2D noise_img;
+uniform float brightness = 7.0;
+uniform vec2 offset =vec2(0.0,0.0);
+void fragment(){
+	vec2 uv = vec2(UV.x+offset.x,UV.y+offset.y);
+	COLOR.rgb += texture(noise_img,uv/8.0).rgb/brightness;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 6 )
+shader_param/brightness = 2.0
+shader_param/offset = Vector2( 0, 0 )
+shader_param/noise_img = SubResource( 3 )
+
+[node name="explode" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+material = SubResource( 7 )
+scale = Vector2( 0.4, 0.402871 )
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+material = SubResource( 5 )
+scale = Vector2( 0.25, 0.256116 )
+color = Color( 1, 0.258824, 0, 1 )
+texture = ExtResource( 5 )
+texture_offset = Vector2( 32, 32 )
+polygon = PoolVector2Array( -0.125, -50.25, 12.75, -48.625, 25.375, -43.25, 35.25, -35.125, 43.5, -24.625, 48.125, -13.375, 50, 0, 48.25, 13, 43.25, 25.25, 35.5, 35.75, 25.75, 43, 12.875, 48, 0, 50.125, -12.875, 48.125, -25, 43.375, -35.625, 35, -43.375, 24.625, -48.5, 12.875, -50.25, -0.5, -48.25, -12.875, -43.625, -25.375, -35.5, -35.375, -25, -43.375, -13.125, -48.25 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+volume_db = -16.723
+
+[connection signal="body_entered" from="." to="." method="_on_explode_body_entered"]

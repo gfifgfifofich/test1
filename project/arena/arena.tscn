@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://arena/arena.gd" type="Script" id=1]
 [ext_resource path="res://arena/enwarning.gd" type="Script" id=2]
 [ext_resource path="res://Main/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Player/KinematicBody2D.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 16 )
@@ -40,29 +41,35 @@ invert_border = 167.1
 polygon = PoolVector2Array( -480, -250, 480, -250, 480, 250, -480, 250 )
 
 [node name="walls" type="KinematicBody2D" parent="."]
+collision_layer = 31
+collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
 position = Vector2( -496, 0 )
 rotation = 1.5708
 shape = SubResource( 1 )
 one_way_collision = true
+one_way_collision_margin = 128.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
 position = Vector2( 496, 0 )
 rotation = -1.5708
 shape = SubResource( 1 )
 one_way_collision = true
+one_way_collision_margin = 128.0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
 position = Vector2( 0, 269 )
 shape = SubResource( 2 )
 one_way_collision = true
+one_way_collision_margin = 128.0
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
 position = Vector2( 0, -269 )
 rotation = -3.14159
 shape = SubResource( 2 )
 one_way_collision = true
+one_way_collision_margin = 128.0
 
 [node name="Polygon2D" type="Polygon2D" parent="walls"]
 z_index = 101
@@ -206,6 +213,9 @@ margin_right = 473.0
 margin_bottom = -160.0
 custom_fonts/font = ExtResource( 3 )
 text = "Kill All enemies"
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( -21, 2 )
 
 [connection signal="body_entered" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_entered"]
 [connection signal="body_exited" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_exited"]

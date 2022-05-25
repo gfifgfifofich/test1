@@ -39,5 +39,9 @@ custom_fonts/font = ExtResource( 1 )
 text = "Exit"
 flat = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300.752 )
+current = true
+
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
 [connection signal="button_up" from="Button3" to="." method="_on_Button3_button_up"]
