@@ -5,7 +5,7 @@ var coldmg = 1
 func _physics_process(delta):
 	
 	rotation += 2*delta
-	move_and_collide((Global.center - position).normalized()*speed)
+	move_and_collide((Global.PlayerPosition - position).normalized()*speed)
 func damage(dmg):
 	hp-=dmg
 	if hp<=0:

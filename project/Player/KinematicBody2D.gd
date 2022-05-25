@@ -29,6 +29,7 @@ var colcount = 0
 var colbodarr = []
 var vel = velocity
 func _physics_process(delta):
+	Global.PlayerPosition = position
 	vel = velocity
 	if hp>0:
 		if colcount>0:
