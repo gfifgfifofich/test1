@@ -18,12 +18,20 @@ color = Color( 1, 0.117647, 0, 1 )
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
 [node name="shield_1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -10 )
+scale = Vector2( 0.625, 0.625 )
 
 [node name="shield_2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 10, 0 )
 rotation = 1.5708
+scale = Vector2( 0.625, 0.625 )
 
 [node name="shield_3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 10 )
 rotation = 3.14159
+scale = Vector2( 0.625, 0.625 )
 
 [node name="shield_4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -10, 0 )
 rotation = -1.5708
+scale = Vector2( 0.625, 0.625 )
