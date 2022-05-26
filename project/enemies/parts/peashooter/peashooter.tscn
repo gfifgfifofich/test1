@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enemies/parts/peashooter/peashooter.gd" type="Script" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=11]
+blend_mode = 1
 
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.165289, 0.644628, 1 )
@@ -30,6 +33,7 @@ uv = PoolVector2Array( 20, 0, 20, 0, 0, 0, 0, 0 )
 position = Vector2( -32, -8 )
 
 [node name="heat" type="Polygon2D" parent="b1"]
+material = SubResource( 11 )
 color = Color( 1, 0.235294, 0, 0 )
 texture = SubResource( 9 )
 polygon = PoolVector2Array( 0, -4, 0, -12, -32, -12, -32, -4 )

@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="en1" type="KinematicBody2D" groups=["enemies"]]
+scale = Vector2( 0.75, 0.75 )
 collision_layer = 5
 script = ExtResource( 1 )
 

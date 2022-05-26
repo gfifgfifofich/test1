@@ -4,7 +4,7 @@ var shtp = preload("res://bullet/shotparticles.tscn")
 var bullet = preload ("res://Player/guns/railgun/shot/laser.tscn")
 var ready = true
 var charging = false
-var cooling = 0.1
+var cooling = 0.04
 func _physics_process(delta):
 	#Cooling
 	if $b1/heat.color.a >0.0 and !charging:

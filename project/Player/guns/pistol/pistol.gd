@@ -2,10 +2,11 @@ extends Node2D
 
 var shtp = preload("res://bullet/shotparticles.tscn")
 var bullet = preload ("res://bullet/bullet.tscn")
-var cooling = 1.0
+var cooling = 0.5
 var ready = false
+var heatcolormult = 0.5
 func _physics_process(delta):
-	if $b1/heat.color.a >2.5:
+	if $b1/heat.color.a >2.5*heatcolormult:
 		ready = false
 	if $b1/heat.color.a <=0.0:
 		ready = true
@@ -14,10 +15,10 @@ func _physics_process(delta):
 	if $b1.position.x>2:
 		$b1.position.x-=0.4
 func shoot(dmg,bulvel,expl,sc,explsc):
-	if $b1/heat.color.a<=2.5 and ready:
+	if $b1/heat.color.a<=2.5*heatcolormult and ready:
 		# Heat, position (graphics)
-		if ($b1/heat.color.a < 2.5):
-			$b1/heat.color.a+=0.175
+		if ($b1/heat.color.a < 2.5*heatcolormult):
+			$b1/heat.color.a+=0.175*heatcolormult
 		$b1.position.x=8 
 		#particles
 		var shtpi = shtp.instance()

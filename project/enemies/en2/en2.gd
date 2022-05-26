@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 #shooter component
 var dmg = 1 # bullet damage
@@ -10,26 +10,17 @@ var frate = float (1.0/4) # 1.0/(shots per sec) ((((1.0/4 == 4 shots / sec))))
 # part component
 var hp = 25
 var coldmg = 0 # collision damage
-var speed = 1
+var speed = 10
 var acceleration
 var velocity = Vector2(0,0)
-func _physics_process(delta):
-	if  is_on_ceiling() or is_on_floor():
-		position += (Global.center - position).normalized() * 10
-		print("ceilfloor")
-		velocity.y *=-0.1  
-	elif  is_on_wall():
-		position += (Global.center - position).normalized() * 10
-		print("WALL")
-		velocity.x *=-0.1  
+
+func _ready():
+	linear_velocity = (Global.PlayerPosition - position).normalized()*speed * 10
 	
-		
-		
-	rotation = 0
-	rotation = get_angle_to(global_position+velocity)
+func _physics_process(delta):
 	acceleration = (Global.PlayerPosition - position).normalized()*speed
-	velocity += acceleration
-	move_and_slide_with_snap(velocity,Vector2(0,1),Vector2(0,-1))
+	applied_torque = get_angle_to(linear_velocity+global_position) * 20
+	applied_force = acceleration
 
 func damage(dmg):
 	hp-=dmg

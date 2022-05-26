@@ -83,13 +83,13 @@ func _physics_process(delta):
 			for i in range (0,c,1):
 				if pist:
 					if $wepbase/pistol/pistol1.ready:
-						$wepbase/pistol/pistol1.cooling = 0.3
+						$wepbase/pistol/pistol1.cooling = 0.15
 					else: 
-						$wepbase/pistol/pistol1.cooling = 0.9
+						$wepbase/pistol/pistol1.cooling = 0.45
 					if $wepbase/pistol/pistol2.ready:
-						$wepbase/pistol/pistol2.cooling = 0.3
+						$wepbase/pistol/pistol2.cooling = 0.15
 					else: 
-						$wepbase/pistol/pistol2.cooling = 0.9
+						$wepbase/pistol/pistol2.cooling = 0.45
 					var bvel = (get_global_mouse_position()-global_position).normalized()*bulvel#+velocity/2
 					t=10*frate
 					if b==1:b=2;else:b=1
@@ -103,16 +103,16 @@ func _physics_process(delta):
 						$wepbase/railgun.charging = true
 						railcharge+=delta *5
 						railcharge = min (railcharge, 5)
-						$wepbase/railgun/b1/heat.color.a=railcharge/2
+						$wepbase/railgun/b1/heat.color.a=railcharge/5
 		if railcharge>0 and !Input.is_action_pressed("lmb") and !pist:
-			$wepbase/railgun/b1/heat.color.a=railcharge/2
+			$wepbase/railgun/b1/heat.color.a=railcharge/5
 			$wepbase/railgun.shoot(dmg * railcharge * 2,bulvel,false,Vector2(1.5,railcharge),Vector2(0,0))
 			$wepbase/railgun.ready = false
 			$wepbase/railgun.charging = false
 			railcharge = 0
 		if !Input.is_action_pressed("lmb"):
-			$wepbase/pistol/pistol1.cooling = 1.0
-			$wepbase/pistol/pistol2.cooling = 1.0
+			$wepbase/pistol/pistol1.cooling = 0.5
+			$wepbase/pistol/pistol2.cooling = 0.5
 		
 		if !velocity==Vector2(0,0) and $Polygon2D.scale.y>0.8:
 			$Polygon2D.scale.y-=0.02
