@@ -26,6 +26,8 @@ var colcount = 0
 var colbodarr = []
 var railcharge = 0
 var heatlevel = [0,0,0,0,0]
+var dasht = 0 # duration of dash
+var dashcd = 0 # cool down = 0.5 seconds
 func _physics_process(delta):
 	Global.PlayerPosition = position
 	Global.PlayerVelocity = velocity
@@ -46,6 +48,7 @@ func _physics_process(delta):
 		$Polygon2D.color.r8 = sm[0]
 		$Polygon2D.color.g8= sm[1]
 		$Polygon2D.color.b8 = sm[2]
+		#movement
 		if !walking:
 			if Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
 				velocity.x=200*speed
@@ -72,6 +75,18 @@ func _physics_process(delta):
 				velocity.x=0
 			if not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"):
 				velocity.y=0
+		
+		if Input.is_action_just_pressed("shift") and dashcd <=0:
+			dasht+=0.2
+			dashcd+=0.5
+		if dasht>0:
+			dasht-=delta
+			velocity*=dasht*25
+		else:
+			dasht = 0
+		dashcd-=delta
+		
+		#shooting
 		$wepbase/pistol.visible=pist
 		$wepbase/railgun.visible=!pist
 		t-=1
