@@ -7,9 +7,9 @@
 modulate = Color( 1.2, 1, 1, 1 )
 z_index = 2665
 emitting = false
+amount = 16
 one_shot = true
 speed_scale = 6.0
 explosiveness = 1.0
-local_coords = false
 process_material = ExtResource( 2 )
 script = ExtResource( 1 )

@@ -38,7 +38,7 @@ func SpawnEnemy(en):
 func nextWave():
 	wave+=1
 	enemiesCount += 5
-	enemiesPoints = enemiesCount+((enemiesCount/10)*wave) 
+	enemiesPoints = enemiesCount
 
 func _physics_process(delta):
 	t+=delta
