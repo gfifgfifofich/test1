@@ -6,11 +6,13 @@ var dmg = 0
 var boom =false
 var astri 
 var dead = false
+var en = false
 var explsc = Vector2(1,1)
 var deadtim = 0
 var t = 2
 func _ready():
 	$Node2D.width=3.771*scale.y
+	
 func _physics_process(delta):
 	if !dead:
 		
@@ -30,18 +32,21 @@ func _physics_process(delta):
 			queue_free()
 func _on_Area2D_body_entered(body):
 	if !dead:
-		if body.is_in_group("enemies"):
+		if body.is_in_group("enemies") and !en:
+			body.damage(dmg)
+			RIP()
+		elif body.name =="player" and en:
 			body.damage(dmg)
 			RIP()
 func RIP():
 	dead = true
 	$Node2D.stop()
 	if boom:
-		pass
 		var explodi = expl.instance()
 		explodi.position = position
 		explodi.scale=explsc
 		explodi.dmg=dmg
+		explodi.en = en
 		Global.main.spawninst(explodi)
 	else:
 		var coparti = copart.instance()

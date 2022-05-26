@@ -1,8 +1,9 @@
 extends Node2D
 
 var en1 = preload("res://enemies/en1/en1.tscn")
+var en2 = preload("res://enemies/en2/en2.tscn")
 
-var enemiesArray = [[en1,5]] # [[enemy.tscn, cost]]
+var enemiesArray = [[en1,1],[en2,5]] # [[enemy.tscn, cost]]
 
 var enemiesCount = 5
 var enemiesPoints = 5
@@ -37,7 +38,7 @@ func SpawnEnemy(en):
 
 func nextWave():
 	wave+=1
-	enemiesCount += 5
+	enemiesCount = 5 * wave
 	enemiesPoints = enemiesCount
 
 func _physics_process(delta):
@@ -50,10 +51,12 @@ func _physics_process(delta):
 		while enemiesArray[i][1] >enemiesPoints && spawntrys<10:# Randoming untill cost of choosed enemy< points 
 			i =rand_range(0,enemiesArray.size())
 			spawntrys+=1
+			
 		if spawntrys>=10: # if we havent finded in 10 tries - spawn red blob wich cost is 1
 			i=0
+			
 		enemiesPoints -= enemiesArray[i][1]
-		SpawnEnemy(en1)
+		SpawnEnemy(enemiesArray[i][0])
 		t=0
 	if enemiesPoints <= 1 and get_tree().get_nodes_in_group("enemies").empty():
 		nextWave()
