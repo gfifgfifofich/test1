@@ -90,7 +90,7 @@ func _physics_process(delta):
 						$wepbase/pistol/pistol2.cooling = 0.3
 					else: 
 						$wepbase/pistol/pistol2.cooling = 0.9
-					var bvel = (get_global_mouse_position()-global_position).normalized()*bulvel+velocity/2
+					var bvel = (get_global_mouse_position()-global_position).normalized()*bulvel#+velocity/2
 					t=10*frate
 					if b==1:b=2;else:b=1
 					if b==1:
@@ -141,7 +141,7 @@ func damage(dmg):
 		dmg=1
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("enemies"):
+	if body.is_in_group("enemies") or body.is_in_group("parts"):
 		colcount+=1
 		colbodarr.append(body)
 		damage(body.coldmg)

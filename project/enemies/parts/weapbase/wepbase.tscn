@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[node name="wepbase" type="KinematicBody2D" groups=["enemies"]]
+[node name="wepbase" type="KinematicBody2D" groups=["parts"]]
 collision_layer = 64
 collision_mask = 64
 script = ExtResource( 1 )

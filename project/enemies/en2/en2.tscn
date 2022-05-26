@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=["enemies"]]
+[node name="en2" type="KinematicBody2D" groups=["enemies"]]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource( 1 )
@@ -20,16 +20,26 @@ shape = SubResource( 1 )
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -16, -16, -16, 16, 16, 16, 16, -16 )
 
-[node name="wepbase" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 32 )
-
-[node name="peashooter" parent="wepbase" instance=ExtResource( 3 )]
-
-[node name="wepbase1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -32 )
-
-[node name="peashooter" parent="wepbase1" instance=ExtResource( 3 )]
-
 [node name="shield_1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 16, 0 )
 rotation = 1.5708
+
+[node name="shield_2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -24, -24 )
+rotation = -2.35619
+
+[node name="wepbase" parent="shield_2" instance=ExtResource( 2 )]
+position = Vector2( 11.3137, -1.90735e-06 )
+rotation = 2.35619
+
+[node name="peashooter" parent="shield_2/wepbase" instance=ExtResource( 3 )]
+
+[node name="shield_3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -24, 24 )
+rotation = -0.785398
+
+[node name="wepbase" parent="shield_3" instance=ExtResource( 2 )]
+position = Vector2( -5.65685, -5.65685 )
+rotation = 0.785398
+
+[node name="peashooter" parent="shield_3/wepbase" instance=ExtResource( 3 )]

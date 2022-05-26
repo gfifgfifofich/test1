@@ -106,7 +106,7 @@ environment = SubResource( 4 )
 [node name="enwarnings" type="Node2D" parent="."]
 
 [node name="enwarning" type="Area2D" parent="enwarnings"]
-position = Vector2( -516.149, 0 )
+position = Vector2( -519.459, 0 )
 rotation = 1.5708
 script = ExtResource( 2 )
 
@@ -131,7 +131,7 @@ color = Color( 0.129412, 0.129412, 0.129412, 1 )
 polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
 
 [node name="enwarning2" type="Area2D" parent="enwarnings"]
-position = Vector2( 512.431, 0 )
+position = Vector2( 517.097, 0 )
 rotation = -1.5708
 script = ExtResource( 2 )
 
@@ -157,7 +157,7 @@ color = Color( 0.129412, 0.129412, 0.129412, 1 )
 polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
 
 [node name="enwarning3" type="Area2D" parent="enwarnings"]
-position = Vector2( 0, 282 )
+position = Vector2( 0, 289.55 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enwarnings/enwarning3"]
@@ -182,7 +182,7 @@ color = Color( 0.129412, 0.129412, 0.129412, 1 )
 polygon = PoolVector2Array( -8, -96, -8.00001, -112, -5.72205e-06, -112, -3.8147e-06, -96 )
 
 [node name="enwarning4" type="Area2D" parent="enwarnings"]
-position = Vector2( -2, -283 )
+position = Vector2( -2, -287.905 )
 rotation = 3.14159
 script = ExtResource( 2 )
 

@@ -32,7 +32,7 @@ func _physics_process(delta):
 			queue_free()
 func _on_Area2D_body_entered(body):
 	if !dead:
-		if body.is_in_group("enemies") and !en:
+		if (body.is_in_group("enemies") or body.is_in_group("parts")) and !en:
 			body.damage(dmg)
 			RIP()
 		elif body.name =="player" and en:

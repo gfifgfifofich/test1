@@ -13,7 +13,7 @@ width = 20
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 16, 8 )
 
-[node name="peashooter" type="KinematicBody2D" groups=["enemies"]]
+[node name="peashooter" type="KinematicBody2D" groups=["parts"]]
 rotation = 3.14159
 z_index = 10
 collision_layer = 64
