@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://arena/arena.gd" type="Script" id=1]
 [ext_resource path="res://arena/enwarning.gd" type="Script" id=2]
 [ext_resource path="res://Main/font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Player/KinematicBody2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://bullet/bullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 16 )
@@ -17,7 +18,8 @@ glow_enabled = true
 glow_levels/1 = true
 glow_levels/2 = true
 glow_levels/4 = true
-glow_levels/5 = false
+glow_levels/6 = true
+glow_levels/7 = true
 glow_intensity = 2.0
 glow_blend_mode = 0
 glow_hdr_threshold = 0.9
@@ -102,6 +104,9 @@ polygon = PoolVector2Array( -480, -192, -480, 200, -496, 200, -496, -192 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
+
+[node name="bullet" parent="WorldEnvironment" instance=ExtResource( 5 )]
+position = Vector2( 134, 47 )
 
 [node name="enwarnings" type="Node2D" parent="."]
 

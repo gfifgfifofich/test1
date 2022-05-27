@@ -12,7 +12,7 @@ func _physics_process(delta):
 	else:
 		t+=delta*10
 		$Polygon2D.visible = true
-		$Polygon2D.color.r  = 1.0 + abs(sin(t)*0.2)
+		$Polygon2D.color.r  = 1.0 + abs(sin(t)*0.1)
 
 func _on_enwarning_body_entered(body):
 	if body.is_in_group("enemies"):
