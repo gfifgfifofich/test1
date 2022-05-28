@@ -3,28 +3,45 @@ extends KinematicBody2D
 var shtp = preload("res://bullet/shotparticles.tscn")
 var bullet = preload ("res://bullet/bullet.tscn")
 var cooling = 1.0
+var coolingmult = cooling
 var ready = false
-var hp = 5
+export var hp = 5
 var coldmg = 0
+var alphamult = 0.35 # multiplicator for easier manipulations with heat
+var heatgaindmg = 0.3
+var heat = 0.0
+var maxheat = 2.0
+
+
+var parent
+func _ready():
+	parent =get_parent()
+	var found = false
+	while !found:
+		if parent.is_in_group("enemies"):
+			found = true
+		else:
+			parent = parent.get_parent()
 func _physics_process(delta):
-	
-	if $b1/heat.color.a >2.0:
+	cooling = parent.coolingspeed * coolingmult
+	if heat >2.0:
 		ready = false
-	if $b1/heat.color.a <=0.0:
+	if heat <=0.0:
 		ready = true
-		
-		
-	if $b1/heat.color.a >0.0:
-		$b1/heat.color.a-=cooling * delta* Global.PlayerCoolingSpeed
-		
-	if $b1.position.x>2:
-		$b1.position.x-=0.4
-		
+	
+	
+	if heat >0.0:
+		heat-=cooling * delta
+	if heat>2:
+		heat-=0.4
+	$b1/heat.color.a = heat * alphamult
+
+
 func shoot(dmg,bulvel,expl,sc,explsc):
-	if $b1/heat.color.a<=2.0 and ready:
+	if heat<=2.0 * alphamult and ready:
 		# Heat, position (graphics)
-		if ($b1/heat.color.a < 2.0):
-			$b1/heat.color.a+=0.75
+		if (heat < 2.0):
+			heat+=0.75
 		$b1.position.x=8 
 		#particles
 		var shtpi = shtp.instance()

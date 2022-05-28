@@ -7,7 +7,7 @@ blend_mode = 1
 
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.165289, 0.644628, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
+colors = PoolColorArray( 1, 0.388235, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=9]
 gradient = SubResource( 8 )

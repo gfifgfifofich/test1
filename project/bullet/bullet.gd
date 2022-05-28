@@ -10,6 +10,7 @@ var en = false
 var explsc = Vector2(1,1)
 var deadtim = 0
 var t = 2
+var heat = 0.1
 func _ready():
 	$Node2D.width=3.771*scale.y
 	
@@ -34,6 +35,7 @@ func _on_Area2D_body_entered(body):
 	if !dead:
 		if (body.is_in_group("enemies") or body.is_in_group("parts")) and !en:
 			body.damage(dmg)
+			body.heat+=heat
 			RIP()
 		elif body.name =="player" and en:
 			body.damage(dmg)

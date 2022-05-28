@@ -23,23 +23,19 @@ angular_damp = 1.0
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -16, -16, -16, 16, 16, 16, 16, -16 )
 
 [node name="shield_1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 8, 0 )
+position = Vector2( 16, 0 )
 rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
 
 [node name="shield_2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -13, -14 )
+position = Vector2( -27, -27 )
 rotation = -2.35619
-scale = Vector2( 0.5, 0.5 )
 
 [node name="wepbase" parent="shield_2" instance=ExtResource( 2 )]
 position = Vector2( 21.2132, -7.07107 )
@@ -48,9 +44,8 @@ rotation = 2.35619
 [node name="peashooter" parent="shield_2/wepbase" instance=ExtResource( 3 )]
 
 [node name="shield_3" parent="." instance=ExtResource( 4 )]
-position = Vector2( -13, 13 )
+position = Vector2( -27, 27 )
 rotation = -0.785398
-scale = Vector2( 0.5, 0.5 )
 
 [node name="wepbase" parent="shield_3" instance=ExtResource( 2 )]
 position = Vector2( -19.799, -5.65685 )

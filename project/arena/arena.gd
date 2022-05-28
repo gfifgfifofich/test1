@@ -3,7 +3,7 @@ extends Node2D
 var en1 = preload("res://enemies/en1/en1.tscn")
 var en2 = preload("res://enemies/en2/en2.tscn")
 
-var enemiesArray = [[en1,1],[en2,5]] # [[enemy.tscn, cost]]
+var enemiesArray = [[en1,5]] # [[enemy.tscn, cost]]
 
 var enemiesCount = 5
 var enemiesPoints = 5

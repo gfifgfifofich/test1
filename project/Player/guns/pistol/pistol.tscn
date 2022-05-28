@@ -7,7 +7,7 @@ blend_mode = 1
 
 [sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0.165289, 0.644628, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
+colors = PoolColorArray( 1, 0.388235, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=7]
 gradient = SubResource( 9 )
@@ -27,7 +27,7 @@ position = Vector2( -32, -8 )
 
 [node name="heat" type="Polygon2D" parent="b1"]
 material = SubResource( 8 )
-color = Color( 1, 0.235294, 0, 1 )
+color = Color( 1, 0.356863, 0, 1 )
 texture = SubResource( 7 )
 polygon = PoolVector2Array( 0, -4, 0, -12, -32, -12, -32, -4 )
 uv = PoolVector2Array( 20, 1.90735e-06, 20, 1.90735e-06, 0, 1.90735e-06, 0, 1.36424e-12 )

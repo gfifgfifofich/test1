@@ -7,7 +7,9 @@ var boom =false
 var dead = false
 var explsc = Vector2(1,1)
 var colormult = 2
-var lifeframes = 5
+var lifeframes = 15
+var heat = 1.0
+
 func _ready():
 	rotation = 0
 	rotation = get_angle_to(get_global_mouse_position())
@@ -23,8 +25,9 @@ func _physics_process(delta):
 		queue_free()
 func _on_Area2D_body_entered(body):
 	if !dead:
-		if body.is_in_group("enemies"):
+		if body.is_in_group("enemies") or body.is_in_group("parts"):
 			body.damage(dmg)
+			body.heat+=heat*(dmg/Global.Playerdmg)
 			if boom:
 				var explodi = expl.instance()
 				var laservec = $laserend.global_position - global_position

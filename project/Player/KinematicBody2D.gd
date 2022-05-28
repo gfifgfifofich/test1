@@ -31,6 +31,7 @@ var dashcd = 0 # cool down = 0.5 seconds
 func _physics_process(delta):
 	Global.PlayerPosition = position
 	Global.PlayerVelocity = velocity
+	Global.Playerdmg = dmg
 	if hp>0:
 		if colcount>0:
 			colentimer-=1
@@ -119,12 +120,14 @@ func _physics_process(delta):
 						railcharge+=delta *5
 						railcharge = min (railcharge, 5)
 						$wepbase/railgun/b1/heat.color.a=railcharge/5
+		
 		if railcharge>0 and !Input.is_action_pressed("lmb") and !pist:
 			$wepbase/railgun/b1/heat.color.a=railcharge/5
-			$wepbase/railgun.shoot(dmg * railcharge * 2,bulvel,false,Vector2(1.5,railcharge),Vector2(0,0))
+			$wepbase/railgun.shoot(dmg * railcharge,bulvel,false,Vector2(1.5,railcharge),Vector2(0,0))
 			$wepbase/railgun.ready = false
 			$wepbase/railgun.charging = false
 			railcharge = 0
+			
 		if !Input.is_action_pressed("lmb"):
 			$wepbase/pistol/pistol1.cooling = 0.5
 			$wepbase/pistol/pistol2.cooling = 0.5
