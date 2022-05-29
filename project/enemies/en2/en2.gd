@@ -6,7 +6,7 @@ var bvel = 250 # bullet velocity
 export var expl = false # exploding?
 var bscale = Vector2(1,1)# bullet scale
 var explscale = Vector2(0,0) # explosion scale
-export var frate = float (1.0/4) # 1.0/(shots per sec) ((((1.0/4 == 4 shots / sec))))
+export var frate = float (1.0/40) # 1.0/(shots per sec) ((((1.0/4 == 4 shots / sec))))
 # part component
 export var hp = 100
 var coldmg = 0 # collision damage
@@ -16,12 +16,12 @@ var velocity = Vector2(0,0)
 
 var heat = 0
 var maxheat = 2.0
+export var stockcoolingspeed = 0.1
 var coolingspeed = 0.1
-var stockcoolingspeed = coolingspeed
 var minr
 var ming
 var colmult = 1
-
+var radiatorCount = 0
 
 func _ready():
 	minr = $Polygon2D.color.r
@@ -30,6 +30,7 @@ func _ready():
 	linear_velocity = (Global.PlayerPosition - position).normalized()*speed * 10
 	
 func _physics_process(delta):
+	coolingspeed = stockcoolingspeed + (0.5 * radiatorCount)
 	if heat > maxheat/7:
 		heat = maxheat/7
 	if heat >0:

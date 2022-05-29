@@ -13,11 +13,11 @@ var coldmg = 1
 var heat = 0
 var maxheat = 2.0
 var coolingspeed = 0.1
-var stockcoolingspeed = coolingspeed
+export var stockcoolingspeed = 0.1
 var minr
 var ming
 var colmult = 1
-
+var radiatorCount = 0
 
 func _ready():
 	minr = $Polygon2D.color.r
@@ -25,7 +25,7 @@ func _ready():
 	colmult = minr
 
 func _physics_process(delta):
-	
+	coolingspeed = stockcoolingspeed + 0.5 * radiatorCount
 	if heat > maxheat/7:
 		heat = maxheat/7
 	if heat >0:
@@ -33,7 +33,7 @@ func _physics_process(delta):
 	$Polygon2D.color.r= minr + heat/maxheat * colmult * 1.8
 	$Polygon2D.color.g= ming + heat/maxheat / 2 * colmult * 1.8
 	
-	rotation += 2*delta
+	rotation += 4*delta
 	move_and_collide((Global.PlayerPosition - position).normalized()*speed)
 func damage(dmg):
 	hp-=dmg * (1+heat / (maxheat/7))

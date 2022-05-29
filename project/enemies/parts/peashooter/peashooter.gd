@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var shtp = preload("res://bullet/shotparticles.tscn")
 var bullet = preload ("res://bullet/bullet.tscn")
-var cooling = 1.0
+export var cooling = 1.0
 var coolingmult = cooling
 var ready = false
 export var hp = 5
@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 
 func shoot(dmg,bulvel,expl,sc,explsc):
-	if heat<=2.0 * alphamult and ready:
+	if heat<=2.0 and ready:
 		# Heat, position (graphics)
 		if (heat < 2.0):
 			heat+=0.75

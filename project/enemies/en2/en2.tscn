@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://enemies/en2/en2.gd" type="Script" id=1]
 [ext_resource path="res://enemies/parts/weapbase/wepbase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://enemies/parts/peashooter/peashooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://enemies/parts/shield_1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/parts/Radiator/radiator.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.3
@@ -21,34 +22,48 @@ gravity_scale = 0.0
 linear_damp = 0.5
 angular_damp = 1.0
 script = ExtResource( 1 )
+frate = 0.25
+hp = 25
+stockcoolingspeed = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -16, -16, -16, 16, 16, 16, 16, -16 )
 
-[node name="shield_1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 16, 0 )
-rotation = 1.5708
-
 [node name="shield_2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -27, -27 )
+position = Vector2( -13, -13 )
 rotation = -2.35619
+scale = Vector2( 0.5, 0.5 )
 
 [node name="wepbase" parent="shield_2" instance=ExtResource( 2 )]
 position = Vector2( 21.2132, -7.07107 )
 rotation = 2.35619
 
 [node name="peashooter" parent="shield_2/wepbase" instance=ExtResource( 3 )]
+cooling = 5.907
 
 [node name="shield_3" parent="." instance=ExtResource( 4 )]
-position = Vector2( -27, 27 )
+position = Vector2( -13, 13 )
 rotation = -0.785398
+scale = Vector2( 0.5, 0.5 )
 
 [node name="wepbase" parent="shield_3" instance=ExtResource( 2 )]
 position = Vector2( -19.799, -5.65685 )
 rotation = 0.785398
 
 [node name="peashooter" parent="shield_3/wepbase" instance=ExtResource( 3 )]
+
+[node name="radiator" parent="." instance=ExtResource( 5 )]
+position = Vector2( 8, -8 )
+rotation = 0.785398
+scale = Vector2( 0.5, 0.5 )
+
+[node name="radiator2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 8, 8 )
+rotation = 2.35619
+scale = Vector2( 0.5, 0.5 )

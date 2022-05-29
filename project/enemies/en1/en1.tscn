@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://enemies/en1/en1.gd" type="Script" id=1]
 [ext_resource path="res://enemies/parts/shield_1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemies/parts/weapbase/wepbase.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -10,7 +9,7 @@
 scale = Vector2( 0.75, 0.75 )
 collision_layer = 5
 script = ExtResource( 1 )
-hp = 8
+hp = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 539
@@ -20,174 +19,26 @@ shape = SubResource( 1 )
 color = Color( 1, 0.117647, 0, 1 )
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
-[node name="wepbase" parent="." instance=ExtResource( 3 )]
-position = Vector2( -26.6667, 2.66667 )
-shooter = false
+[node name="shield" parent="." instance=ExtResource( 2 )]
+position = Vector2( -9.33333, 0 )
+rotation = -1.5708
+scale = Vector2( 0.311, 2.047 )
+hp = 10
 
-[node name="shield_1" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 98.7957, -3.99999 )
+[node name="shield2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 9.33333, 0 )
+rotation = 1.5708
+scale = Vector2( 0.311, 2.047 )
+hp = 10
 
-[node name="shield_2" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 98.7957, -12 )
+[node name="shield3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 9.33333 )
+rotation = -3.14606
+scale = Vector2( 0.311, 2.047 )
+hp = 10
 
-[node name="shield_3" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 98.7957, -20 )
-
-[node name="shield_4" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 98.7957, -28 )
-
-[node name="shield_5" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 98.7957, -36 )
-
-[node name="shield_6" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 98.7957, -44 )
-
-[node name="shield_7" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 58.6667, -12 )
-rotation = -3.14159
-
-[node name="shield_8" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 58.6667, -20 )
-rotation = -3.14159
-
-[node name="shield_9" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 58.6667, -28 )
-rotation = -3.14159
-
-[node name="shield_10" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 58.6667, -36 )
-rotation = -3.14159
-
-[node name="shield_11" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 58.6667, -44 )
-rotation = -3.14159
-
-[node name="shield_12" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 58.6667, -52 )
-rotation = -3.14159
-
-[node name="shield_13" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 178.796, -3.99999 )
-
-[node name="shield_14" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 178.796, -12 )
-
-[node name="shield_15" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 178.796, -20 )
-
-[node name="shield_16" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 178.796, -28 )
-
-[node name="shield_17" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 178.796, -36 )
-
-[node name="shield_18" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 178.796, -44 )
-
-[node name="shield_19" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 138.667, -12 )
-rotation = -3.14159
-
-[node name="shield_20" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 138.667, -20 )
-rotation = -3.14159
-
-[node name="shield_21" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 138.667, -28 )
-rotation = -3.14159
-
-[node name="shield_22" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 138.667, -36 )
-rotation = -3.14159
-
-[node name="shield_23" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 138.667, -44 )
-rotation = -3.14159
-
-[node name="shield_24" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 138.667, -52 )
-rotation = -3.14159
-
-[node name="shield_25" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 97.4623, 45.3333 )
-
-[node name="shield_26" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 97.4623, 37.3333 )
-
-[node name="shield_27" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 97.4623, 29.3333 )
-
-[node name="shield_28" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 97.4623, 21.3333 )
-
-[node name="shield_29" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 97.4623, 13.3333 )
-
-[node name="shield_30" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 97.4623, 5.33332 )
-
-[node name="shield_31" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 57.3333, 37.3333 )
-rotation = -3.14159
-
-[node name="shield_32" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 57.3333, 29.3333 )
-rotation = -3.14159
-
-[node name="shield_33" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 57.3333, 21.3333 )
-rotation = -3.14159
-
-[node name="shield_34" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 57.3333, 13.3333 )
-rotation = -3.14159
-
-[node name="shield_35" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 57.3333, 5.33335 )
-rotation = -3.14159
-
-[node name="shield_36" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 57.3333, -2.66667 )
-rotation = -3.14159
-
-[node name="shield_37" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 177.462, 45.3333 )
-
-[node name="shield_38" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 177.462, 37.3333 )
-
-[node name="shield_39" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 177.462, 29.3333 )
-
-[node name="shield_40" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 177.462, 21.3333 )
-
-[node name="shield_41" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 177.462, 13.3333 )
-
-[node name="shield_42" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 177.462, 5.33332 )
-
-[node name="shield_43" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 137.333, 37.3333 )
-rotation = -3.14159
-
-[node name="shield_44" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 137.333, 29.3333 )
-rotation = -3.14159
-
-[node name="shield_45" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 137.333, 21.3333 )
-rotation = -3.14159
-
-[node name="shield_46" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 137.333, 13.3333 )
-rotation = -3.14159
-
-[node name="shield_47" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 137.333, 5.33334 )
-rotation = -3.14159
-
-[node name="shield_48" parent="wepbase" instance=ExtResource( 2 )]
-position = Vector2( 137.333, -2.66666 )
-rotation = -3.14159
+[node name="shield4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2.79397e-09, -9.33333 )
+rotation = -0.00446498
+scale = Vector2( 0.311, 2.047 )
+hp = 10
