@@ -1,9 +1,29 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://arena/arena.gd" type="Script" id=1]
 [ext_resource path="res://arena/enwarning.gd" type="Script" id=2]
 [ext_resource path="res://Main/font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Player/KinematicBody2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://white.png" type="Texture" id=5]
+[ext_resource path="res://arena/TextureRect.gd" type="Script" id=6]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform float offset = 0.01f;
+
+void fragment() {
+	vec2 uvr = SCREEN_UV + offset;
+	vec2 uvg = SCREEN_UV;
+	vec2 uvb = SCREEN_UV - offset;
+	COLOR.r = textureLod(SCREEN_TEXTURE, uvr, 0.0).r;
+	COLOR.g = textureLod(SCREEN_TEXTURE, uvg, 0.0).g;
+	COLOR.b = textureLod(SCREEN_TEXTURE, uvb, 0.0).b;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 252, 16 )
@@ -35,6 +55,16 @@ script = ExtResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 1704
 current = true
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+material = SubResource( 6 )
+margin_left = -528.0
+margin_top = -312.0
+margin_right = 528.0
+margin_bottom = 312.0
+texture = ExtResource( 5 )
+expand = true
+script = ExtResource( 6 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = 100

@@ -6,3 +6,4 @@ var PlayerLookDir = 0.0
 var PlayerCoolingSpeed = 100.0
 var Playerdmg = 1.0
 var main
+var texturerect

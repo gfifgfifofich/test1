@@ -28,6 +28,8 @@ var railcharge = 0
 var heatlevel = [0,0,0,0,0]
 var dasht = 0 # duration of dash
 var dashcd = 0 # cool down = 0.5 seconds
+var railgunspeed = 2.5 # 1.0 =  full charge in 5 sec, 5.0 = 1 sec
+var raildmgmult = 2.0
 func _physics_process(delta):
 	Global.PlayerPosition = position
 	Global.PlayerVelocity = velocity
@@ -117,13 +119,13 @@ func _physics_process(delta):
 				else:
 					if $wepbase/railgun.ready:
 						$wepbase/railgun.charging = true
-						railcharge+=delta *5
+						railcharge+=delta *railgunspeed
 						railcharge = min (railcharge, 5)
 						$wepbase/railgun/b1/heat.color.a=railcharge/5
 		
 		if railcharge>0 and !Input.is_action_pressed("lmb") and !pist:
 			$wepbase/railgun/b1/heat.color.a=railcharge/5
-			$wepbase/railgun.shoot(dmg * railcharge,bulvel,false,Vector2(1.5,railcharge),Vector2(0,0))
+			$wepbase/railgun.shoot(dmg * railcharge * raildmgmult,bulvel,false,Vector2(1.5,railcharge/3),Vector2(10,5))
 			$wepbase/railgun.ready = false
 			$wepbase/railgun.charging = false
 			railcharge = 0

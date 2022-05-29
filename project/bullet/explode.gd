@@ -20,7 +20,7 @@ func _physics_process(delta):
 
 func _on_explode_body_entered(body):
 	if !en:
-		if body.is_in_group("enemies"):
+		if body.is_in_group("enemies") or body.is_in_group("parts"):
 			body.damage(dmg)
 	else:
 		if body.name == "player":

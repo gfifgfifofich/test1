@@ -1,6 +1,6 @@
 extends KinematicBody2D
 var vel=Vector2()
-var copart=preload("res://bullet/shotparticles.tscn")
+var copart=preload("res://Player/guns/railgun/shot/collisionparticles.tscn")
 var expl=preload("res://bullet/explode.tscn")
 var dmg = 0
 var boom =false
@@ -32,6 +32,7 @@ func _on_Area2D_body_entered(body):
 				var explodi = expl.instance()
 				var laservec = $laserend.global_position - global_position
 				var relpos = global_position - body.global_position
+				explodi.rotation = rotation
 				explodi.position=body.global_position + relpos - ((relpos.x* laservec.x + relpos.y* laservec.y) /(laservec.x*laservec.x+laservec.y*laservec.y))*laservec 
 				
 				explodi.scale=explsc
@@ -40,12 +41,10 @@ func _on_Area2D_body_entered(body):
 			else:
 				var coparti = copart.instance()
 				
-				coparti.rotation = rotation + deg2rad(180)
+				coparti.rotation = rotation
 				coparti.z_index = 1000
-				coparti.speed_scale = 3
-				coparti.scale = Vector2(10,5)
-				coparti.modulate.a = 2 
-				coparti.modulate.b = 3 
+				coparti.speed_scale = 1
+				coparti.scale = Vector2(scale.y,scale.y)
 				coparti.emitting=true
 				
 				 

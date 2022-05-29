@@ -56,7 +56,4 @@ texture = ExtResource( 5 )
 texture_offset = Vector2( 32, 32 )
 polygon = PoolVector2Array( -0.125, -50.25, 12.75, -48.625, 25.375, -43.25, 35.25, -35.125, 43.5, -24.625, 48.125, -13.375, 50, 0, 48.25, 13, 43.25, 25.25, 35.5, 35.75, 25.75, 43, 12.875, 48, 0, 50.125, -12.875, 48.125, -25, 43.375, -35.625, 35, -43.375, 24.625, -48.5, 12.875, -50.25, -0.5, -48.25, -12.875, -43.625, -25.375, -35.5, -35.375, -25, -43.375, -13.125, -48.25 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
-volume_db = -16.723
-
 [connection signal="body_entered" from="." to="." method="_on_explode_body_entered"]

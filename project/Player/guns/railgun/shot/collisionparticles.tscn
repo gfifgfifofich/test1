@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player/guns/railgun/shot/collisoinparticles.gd" type="Script" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0, 0.976471, 1, 0.0313726, 1, 0.737255, 0, 0.14902 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+min_value = -1.0
+_data = [ Vector2( 0, 0.0227274 ), 0.0, 0.0, 0, 0, Vector2( 0.340081, 0.0227274 ), 4.11667, 4.11667, 0, 0, Vector2( 0.676113, 0.00454545 ), 2.92886, 2.92886, 0, 0, Vector2( 1, 0.00454545 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, 1.55733, 0, 0, Vector2( 1, 0 ), -4.55695, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 4, 1 )
+flag_disable_z = true
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.15
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 1.0
+orbit_velocity_curve = SubResource( 5 )
+angle = 720.0
+angle_random = 1.0
+scale = 4.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D"]
+material = SubResource( 1 )
+emitting = false
+amount = 25
+one_shot = true
+speed_scale = 6.06
+explosiveness = 1.0
+process_material = SubResource( 8 )
+script = ExtResource( 1 )
