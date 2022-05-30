@@ -13,12 +13,13 @@ invert_border = 128.8
 polygon = PoolVector2Array( 974, 550, 974, 50, 50, 50, 50, 550 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 392.0
-margin_top = 94.0
-margin_right = 677.0
-margin_bottom = 173.0
+margin_left = 372.0
+margin_top = 93.0
+margin_right = 657.0
+margin_bottom = 172.0
 custom_fonts/font = ExtResource( 1 )
-text = "\"H E A T\" ?"
+text = "H E A T"
+align = 1
 
 [node name="Button" type="Button" parent="."]
 margin_left = 432.0
