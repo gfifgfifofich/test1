@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://arena/arena.gd" type="Script" id=1]
 [ext_resource path="res://arena/enwarning.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Player/KinematicBody2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://white.png" type="Texture" id=5]
 [ext_resource path="res://arena/TextureRect.gd" type="Script" id=6]
-[ext_resource path="res://enemies/particles/destroy.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -251,9 +250,6 @@ text = "Kill All Niggers"
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -21, 2 )
-
-[node name="Particles2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( -177, -11 )
 
 [connection signal="body_entered" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_entered"]
 [connection signal="body_exited" from="enwarnings/enwarning" to="enwarnings/enwarning" method="_on_enwarning_body_exited"]

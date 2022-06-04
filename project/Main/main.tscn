@@ -3,54 +3,25 @@
 [ext_resource path="res://Main/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Main/main.gd" type="Script" id=2]
 
-[node name="main" type="Node2D"]
+[node name="Node2D" type="Node2D"]
+position = Vector2( 503, 205 )
 script = ExtResource( 2 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.529412, 0.501961, 0.501961, 1 )
-invert_enable = true
-invert_border = 128.8
-polygon = PoolVector2Array( 974, 550, 974, 50, 50, 50, 50, 550 )
-
-[node name="Label" type="Label" parent="."]
-<<<<<<< HEAD
-margin_left = 418.0
-margin_top = 101.0
-margin_right = 617.0
-margin_bottom = 180.0
-custom_fonts/font = ExtResource( 1 )
-text = "H E A T"
-=======
-margin_left = 372.0
-margin_top = 93.0
-margin_right = 657.0
-margin_bottom = 172.0
-custom_fonts/font = ExtResource( 1 )
-text = "H E A T"
-align = 1
->>>>>>> b7121d0a93acf46e2a21d228f55a990239cb84eb
-
 [node name="Button" type="Button" parent="."]
-margin_left = 432.0
-margin_top = 256.0
-margin_right = 593.0
-margin_bottom = 341.0
+margin_left = -72.0
+margin_top = -38.0
+margin_right = 71.0
+margin_bottom = 47.0
 custom_fonts/font = ExtResource( 1 )
-text = "Start"
-flat = true
+text = "start"
 
-[node name="Button3" type="Button" parent="."]
-margin_left = 448.0
-margin_top = 432.0
-margin_right = 576.0
-margin_bottom = 517.0
+[node name="Button2" type="Button" parent="."]
+margin_left = -59.0
+margin_top = 97.0
+margin_right = 64.0
+margin_bottom = 219.0
 custom_fonts/font = ExtResource( 1 )
-text = "Exit"
-flat = true
+text = "exit"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 300.752 )
-current = true
-
-[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
-[connection signal="button_up" from="Button3" to="." method="_on_Button3_button_up"]
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_Button2_button_down"]
