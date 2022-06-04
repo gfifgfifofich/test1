@@ -1,4 +1,5 @@
 extends KinematicBody2D
+export var dethparticles = preload("res://enemies/particles/destroy.tscn")
 
 var shtp = preload("res://bullet/shotparticles.tscn")
 var bullet = preload ("res://bullet/bullet.tscn")
@@ -47,7 +48,7 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 		var shtpi = shtp.instance()
 		shtpi.position = $b1/bn.global_position
 		shtpi.emitting=true
-		shtpi.rotation = Global.PlayerLookDir
+		shtpi.rotation = rotation
 		Global.main.spawninst(shtpi)
 		
 		#shoot
@@ -68,4 +69,8 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 func damage(dmg):
 	hp-=dmg
 	if hp<=0:
+		var dpi = dethparticles.instance()
+		dpi.position = global_position
+		dpi.partamount = 5
+		Global.main.spawninst(dpi)
 		get_tree().queue_delete(self)

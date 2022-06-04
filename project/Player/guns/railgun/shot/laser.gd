@@ -27,7 +27,7 @@ func _on_Area2D_body_entered(body):
 	if !dead:
 		if body.is_in_group("enemies") or body.is_in_group("parts"):
 			body.damage(dmg)
-			body.heat+=heat*(dmg/Global.Playerdmg)
+			body.heat+=heat*(dmg/Global.Player.dmg)
 			if boom:
 				var explodi = expl.instance()
 				var laservec = $laserend.global_position - global_position

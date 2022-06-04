@@ -8,7 +8,7 @@ var cooling = 0.04
 func _physics_process(delta):
 	#Cooling
 	if $b1/heat.color.a >0.0 and !charging:
-		$b1/heat.color.a-=cooling * delta* Global.PlayerCoolingSpeed
+		$b1/heat.color.a-=cooling * delta* Global.Player.CoolingSpeed
 		ready = false
 	elif !charging:
 		ready = true
@@ -19,14 +19,14 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 	# Heat, position (graphics)
 	if ready:
 		
-		Global.texturerect.get_material().set_shader_param("offset",0.002 * dmg/Global.Playerdmg)
+		Global.texturerect.get_material().set_shader_param("offset",0.002 * dmg/Global.Player.dmg)
 		
 		$b1.position.x=8 
 		#particles
 		var shtpi = shtp.instance()
 		shtpi.position = $b1/bn.global_position
 		shtpi.emitting=true
-		shtpi.rotation = Global.PlayerLookDir
+		shtpi.rotation = Global.Player.LookDir
 		Global.main.spawninst(shtpi)
 		
 		#shoot

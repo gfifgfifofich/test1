@@ -1,4 +1,6 @@
 extends KinematicBody2D
+export var dethparticles = preload("res://enemies/particles/destroy.tscn")
+
 export var hp = 10
 export var speed = 1
 #shooter component
@@ -34,8 +36,11 @@ func _physics_process(delta):
 	$Polygon2D.color.g= ming + heat/maxheat / 2 * colmult * 1.8
 	
 	rotation += 4*delta
-	move_and_collide((Global.PlayerPosition - position).normalized()*speed)
+	move_and_collide((Global.Player.position - position).normalized()*speed)
 func damage(dmg):
 	hp-=dmg * (1+heat / (maxheat/7))
 	if hp<=0:
+		var dpi = dethparticles.instance()
+		dpi.position = position
+		Global.main.spawninst(dpi)
 		get_tree().queue_delete(self)

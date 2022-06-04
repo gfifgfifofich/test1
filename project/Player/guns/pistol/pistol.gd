@@ -11,7 +11,7 @@ func _physics_process(delta):
 	if $b1/heat.color.a <=0.0:
 		ready = true
 	if $b1/heat.color.a >0.0:
-		$b1/heat.color.a-=cooling * delta* Global.PlayerCoolingSpeed
+		$b1/heat.color.a-=cooling * delta* Global.Player.CoolingSpeed
 	if $b1.position.x>2:
 		$b1.position.x-=0.4
 func shoot(dmg,bulvel,expl,sc,explsc):
@@ -24,7 +24,7 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 		var shtpi = shtp.instance()
 		shtpi.position = $b1/bn.global_position
 		shtpi.emitting=true
-		shtpi.rotation = Global.PlayerLookDir
+		shtpi.rotation = Global.Player.LookDir
 		Global.main.spawninst(shtpi)
 		
 		#shoot
@@ -32,7 +32,7 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 		var bi = bullet.instance()
 		var mult = 1
 		bi.scale=sc
-		bi.vel=($b1/bn.global_position-global_position).normalized()*bulvel+Global.PlayerVelocity/2
+		bi.vel=($b1/bn.global_position-global_position).normalized()*bulvel+Global.Player.velocity/2
 		bi.explsc = explsc
 		if expl:
 			mult = 1.25

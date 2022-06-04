@@ -24,4 +24,4 @@ func _on_explode_body_entered(body):
 			body.damage(dmg)
 	else:
 		if body.name == "player":
-			body.damage(1)
+			body.damage(dmg)

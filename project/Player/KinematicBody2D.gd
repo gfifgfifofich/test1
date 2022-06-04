@@ -10,7 +10,7 @@ var frate = float(6.0/15.0)
 var dmg =1
 var explscale = Vector2(4,4)
 var bulvel = 500
-var coins =0
+var parts =0 # parts count(mmmoney)
 var dir = Vector2()
 var shtdir = Vector2()
 var bfire = false
@@ -21,19 +21,26 @@ var b = 1 # barrel
 var bpos =Vector2(0,0)
 var cr=0 # current rotation of body
 var pr=0# previous rotation of body
-var colentimer = 30
+var LookDir=0
+
+var colentimer = 30#collision with enemies
 var colcount = 0
-var colbodarr = []
-var railcharge = 0
-var heatlevel = [0,0,0,0,0]
+var colbodarr = []#
+
+
+var CoolingSpeed = 1.0
+var heatlevel = [0,0,0,0,0]# heat level of every gun
+
 var dasht = 0 # duration of dash
 var dashcd = 0 # cool down = 0.5 seconds
+
+var railcharge = 0#railgun stuff
 var railgunspeed = 2.5 # 1.0 =  full charge in 5 sec, 5.0 = 1 sec
 var raildmgmult = 2.0
+
+func _ready():
+	Global.Player = self
 func _physics_process(delta):
-	Global.PlayerPosition = position
-	Global.PlayerVelocity = velocity
-	Global.Playerdmg = dmg
 	if hp>0:
 		if colcount>0:
 			colentimer-=1
@@ -47,7 +54,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("2"):
 			pist = false
 		$wepbase.rotation = get_angle_to(get_global_mouse_position())+deg2rad(180)
-		Global.PlayerLookDir = get_angle_to(get_global_mouse_position())+deg2rad(180)
+		LookDir = get_angle_to(get_global_mouse_position())+deg2rad(180)
 		$Polygon2D.color.r8 = sm[0]
 		$Polygon2D.color.g8= sm[1]
 		$Polygon2D.color.b8 = sm[2]

@@ -1,4 +1,6 @@
 extends KinematicBody2D
+export var dethparticles = preload("res://enemies/particles/destroy.tscn")
+
 export var hp = 15
 export var shooter = true
 var coldmg = 0
@@ -43,9 +45,13 @@ func _physics_process(delta):
 				if get_child(i).name !="CollisionShape2D" and get_child(i).name !="Polygon2D" and get_child(i).name !="shield":
 					get_child(i).shoot(parent.dmg,parent.bvel,parent.expl,parent.bscale,parent.explscale)
 	rotation = 0
-	rotation = get_angle_to(Global.PlayerPosition)
+	rotation = get_angle_to(Global.Player.position)
 
 func damage(dmg):
 	hp-=dmg * (1+heat / (maxheat/2.5))
 	if hp<=0:
+		var dpi = dethparticles.instance()
+		dpi.position = global_position
+		dpi.partamount = 5
+		Global.main.spawninst(dpi)
 		get_tree().queue_delete(self)

@@ -1,0 +1,155 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://enemies/particles/destroy.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform sampler2D noise_img;
+uniform float brightness = 2.0;
+//uniform vec2 offset =vec2(0.0,0.0);
+void fragment(){
+	//vec2 uv = vec2(UV.x+offset.x+TIME,UV.y+offset.y);
+	//COLOR.rgb = color;
+	vec2 center = vec2(-0.5);
+	float dist = sqrt((UV+center).x*(UV+center).x+(UV+center).y*(UV+center).y);
+	//COLOR.a =0.0f;
+	
+	COLOR.a = smoothstep(1.0f-dist,0.0f,brightness);
+	COLOR.rgb = texture(noise_img,UV).rgb;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=2]
+octaves = 2
+period = 53.2
+persistence = 0.402
+lacunarity = 1.3
+
+[sub_resource type="NoiseTexture" id=3]
+width = 100
+height = 100
+noise = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/brightness = 0.464
+shader_param/noise_img = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0 ), 0.0, 7.22386, 0, 0, Vector2( 1, 0 ), -1.67104, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 90.23
+initial_velocity_random = 1.0
+angular_velocity = 135.34
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 44.36
+damping_random = 0.18
+angle = 720.0
+angle_random = 1.0
+scale = 20.0
+scale_random = 0.32
+scale_curve = SubResource( 6 )
+color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.767857, 1 )
+colors = PoolColorArray( 1.2, 0.7, 0, 1, 0.469238, 0.469238, 0.469238, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Curve" id=10]
+max_value = 100.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.242915, 0 ), -1.33658, -1.33658, 0, 0, Vector2( 0.295547, 48.8636 ), 0.0, 0.0, 0, 0, Vector2( 0.368421, 0 ), -4.67807, -4.67807, 0, 0, Vector2( 0.643725, 29.5455 ), 196.994, 0.0, 0, 0, Vector2( 1, 17.7273 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.238866, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.295547, 0.873864 ), 0.0, 0.0, 0, 0, Vector2( 0.37247, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.631579, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.753036, 0.773864 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.779778 ), 0.0534632, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 45.11
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping_curve = SubResource( 11 )
+angle = 720.0
+angle_random = 1.0
+scale = 5.0
+scale_random = 1.0
+scale_curve = SubResource( 13 )
+color = Color( 2, 1, 1, 1 )
+color_ramp = SubResource( 9 )
+
+[sub_resource type="CanvasItemMaterial" id=15]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=16]
+offsets = PoolRealArray( 0, 0.620536, 1 )
+colors = PoolColorArray( 1, 0.445313, 0, 1, 1, 0.487409, 0.0758929, 0.924107, 1, 0.492188, 0, 0 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=20]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 383.46
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 0.41
+scale_curve = SubResource( 19 )
+color = Color( 2, 1, 1, 1 )
+color_ramp = SubResource( 17 )
+
+[node name="Particles2D" type="Particles2D"]
+material = SubResource( 4 )
+z_index = 21
+emitting = false
+amount = 32
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 7 )
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+z_index = 22
+emitting = false
+amount = 16
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 14 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+material = SubResource( 15 )
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 20 )

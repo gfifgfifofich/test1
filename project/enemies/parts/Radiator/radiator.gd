@@ -1,4 +1,5 @@
 extends KinematicBody2D
+export var dethparticles = preload("res://enemies/particles/destroy.tscn")
 export var hp = 10
 export var coldmg = 1
 
@@ -38,4 +39,8 @@ func damage(dmg):
 	hp-=dmg * 2
 	if hp<=0:
 		parent.radiatorCount -=1
+		var dpi = dethparticles.instance()
+		dpi.position = global_position
+		dpi.partamount = 5
+		Global.main.spawninst(dpi)
 		get_tree().queue_delete(self)
