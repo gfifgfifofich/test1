@@ -19,7 +19,7 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 	# Heat, position (graphics)
 	if ready:
 		
-		Global.texturerect.get_material().set_shader_param("offset",0.002 * dmg/Global.Player.dmg)
+		Global.texturerect.get_material().set_shader_param("offset",0.0015 * dmg/Global.Player.dmg)
 		
 		$b1.position.x=8 
 		#particles
