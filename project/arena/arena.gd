@@ -15,6 +15,7 @@ var t = 0
 
 func _ready():
 	Global.main = self
+	$UI.scale=Vector2(1.3,1.3)
 
 func spawninst(inst):
 	add_child(inst)
@@ -44,6 +45,18 @@ func nextWave():
 func _physics_process(delta):
 	t+=delta
 	
+	# UI stuff-------------------------
+	$UI/health.scale.x = Global.Player.hp/Global.Player.maxhp
+	
+	$UI/heat1/heat.scale.y =  min(Global.Player.heatlevel[0],1.0)
+	$UI/heat1/heat.color.r =  1.0 +Global.Player.heatlevel[0]/4
+	$UI/heat2/heat.scale.y =  min(Global.Player.heatlevel[1],1.0)
+	$UI/heat2/heat.color.r =  1.0 +Global.Player.heatlevel[1]/4
+	
+	$UI/heat3/heat.scale.y =  min(Global.Player.heatlevel[2],1.0)
+	$UI/heat3/heat.color.r =  1.0 +Global.Player.heatlevel[2]*0.3
+	
+	# UI stuff-------------------------
 	
 	if t>1.0/(enemiesCount+((enemiesCount/10)*wave))  and enemiesPoints >=1:
 		var i =rand_range(0,enemiesArray.size())

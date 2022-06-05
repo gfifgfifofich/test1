@@ -18,7 +18,6 @@ var colmult
 var colormult = 1.0 # crude multiplier
 
 
-
 func _ready():
 	minr = $Polygon2D.color.r
 	ming = $Polygon2D.color.g
@@ -50,8 +49,10 @@ func _physics_process(delta):
 func damage(dmg):
 	hp-=dmg * (1+heat / (maxheat/2.5))
 	if hp<=0:
-		var dpi = dethparticles.instance()
-		dpi.position = global_position
-		dpi.partamount = 5
-		Global.main.spawninst(dpi)
-		get_tree().queue_delete(self)
+		die()
+func die():
+	var dpi = dethparticles.instance()
+	dpi.position = global_position
+	dpi.partamount = 5
+	Global.main.spawninst(dpi)
+	get_tree().queue_delete(self)

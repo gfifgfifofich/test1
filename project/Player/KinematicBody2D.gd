@@ -2,9 +2,9 @@ extends KinematicBody2D
 var velocity=Vector2()
 var pp = Vector2()
 var cp = Vector2()
-var t =10
-var hp=500
-var maxhp=500
+var t =10.0
+var hp=50.0
+var maxhp=50.0
 var speed = 1
 var frate = float(6.0/15.0)
 var dmg =1
@@ -41,6 +41,9 @@ var raildmgmult = 2.0
 func _ready():
 	Global.Player = self
 func _physics_process(delta):
+	heatlevel[0] = $wepbase/pistol/pistol1/b1/heat.color.a /(2.5*$wepbase/pistol/pistol1.heatcolormult)
+	heatlevel[1] = $wepbase/pistol/pistol2/b1/heat.color.a /(2.5*$wepbase/pistol/pistol2.heatcolormult)
+	heatlevel[2] =$wepbase/railgun/b1/heat.color.a
 	if hp>0:
 		if colcount>0:
 			colentimer-=1
@@ -100,18 +103,19 @@ func _physics_process(delta):
 		$wepbase/pistol.visible=pist
 		$wepbase/railgun.visible=!pist
 		t-=1
-		heatlevel[0] =($wepbase/pistol/pistol2/b1/heat.color.a + $wepbase/pistol/pistol1/b1/heat.color.a)/5
+		
 		if Input.is_action_pressed("lmb")and t<=0 :
 			var c = 1
 			if frate>60:
 				c=frate/60
 			for i in range (0,c,1):
 				if pist:
-					if $wepbase/pistol/pistol1.ready:
+					if $wepbase/pistol/pistol1.ready:#pist1
 						$wepbase/pistol/pistol1.cooling = 0.15
 					else: 
 						$wepbase/pistol/pistol1.cooling = 0.45
-					if $wepbase/pistol/pistol2.ready:
+					
+					if $wepbase/pistol/pistol2.ready:#pist2
 						$wepbase/pistol/pistol2.cooling = 0.15
 					else: 
 						$wepbase/pistol/pistol2.cooling = 0.45
@@ -160,9 +164,7 @@ func _physics_process(delta):
 
 func damage(dmg):
 	hp-=dmg
-	#Main.updatehp()
 	if hp<=0:
-		#Main.updatehp()
 		float(6.0/5.0)
 		speed=1
 		dmg=1

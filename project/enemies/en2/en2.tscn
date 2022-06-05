@@ -45,7 +45,6 @@ position = Vector2( 21.2132, -7.07107 )
 rotation = 2.35619
 
 [node name="peashooter" parent="shield_2/wepbase" instance=ExtResource( 3 )]
-cooling = 5.907
 
 [node name="shield_3" parent="." instance=ExtResource( 4 )]
 position = Vector2( -13, 13 )

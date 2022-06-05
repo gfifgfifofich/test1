@@ -30,6 +30,7 @@ func _ready():
 	linear_velocity = (Global.Player.position - position).normalized()*speed * 10
 	
 func _physics_process(delta):
+	
 	coolingspeed = stockcoolingspeed + (0.5 * radiatorCount)
 	if heat > maxheat/7:
 		heat = maxheat/7
@@ -48,4 +49,5 @@ func damage(dmg):
 		var dpi = dethparticles.instance()
 		dpi.position = position
 		Global.main.spawninst(dpi)
+		
 		get_tree().queue_delete(self)

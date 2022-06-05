@@ -25,6 +25,9 @@ func _ready():
 		else:
 			parent = parent.get_parent()
 	parent.radiatorCount +=1
+	
+
+
 func _physics_process(delta):
 	cooling = parent.coolingspeed * coolingmult
 	if heat > maxheat:
@@ -34,13 +37,17 @@ func _physics_process(delta):
 	var heatcolor = (heat/maxheat) * colmult * colormult
 	$Polygon2D.color.r= minr + heatcolor
 	$Polygon2D.color.g= ming + heatcolor/2
-	
+
+
 func damage(dmg):
 	hp-=dmg * 2
 	if hp<=0:
-		parent.radiatorCount -=1
-		var dpi = dethparticles.instance()
-		dpi.position = global_position
-		dpi.partamount = 5
-		Global.main.spawninst(dpi)
-		get_tree().queue_delete(self)
+		die()
+
+func die():
+	parent.radiatorCount -=1
+	var dpi = dethparticles.instance()
+	dpi.position = global_position
+	dpi.partamount = 5
+	Global.main.spawninst(dpi)
+	get_tree().queue_delete(self)

@@ -2,7 +2,7 @@ extends KinematicBody2D
 var vel=Vector2()
 var copart=preload("res://bullet/bulcolpart.tscn")
 var expl=preload("res://bullet/explode.tscn")
-var dmg = 0
+var dmg = 1
 var boom =false
 var astri 
 var dead = false

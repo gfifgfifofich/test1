@@ -43,4 +43,5 @@ func damage(dmg):
 		var dpi = dethparticles.instance()
 		dpi.position = position
 		Global.main.spawninst(dpi)
+		
 		get_tree().queue_delete(self)

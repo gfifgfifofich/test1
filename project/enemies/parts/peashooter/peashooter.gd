@@ -69,8 +69,10 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 func damage(dmg):
 	hp-=dmg
 	if hp<=0:
-		var dpi = dethparticles.instance()
-		dpi.position = global_position
-		dpi.partamount = 5
-		Global.main.spawninst(dpi)
-		get_tree().queue_delete(self)
+		die()
+func die():
+	var dpi = dethparticles.instance()
+	dpi.position = global_position
+	dpi.partamount = 5
+	Global.main.spawninst(dpi)
+	get_tree().queue_delete(self)
