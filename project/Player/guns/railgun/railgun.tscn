@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/guns/railgun/railgun.gd" type="Script" id=1]
+[ext_resource path="res://Player/guns/railgun/sound.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/guns/railgun/laser.wav" type="AudioStream" id=3]
+[ext_resource path="res://Player/guns/railgun/laserend.wav" type="AudioStream" id=4]
+[ext_resource path="res://Player/guns/pistol/shot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/guns/railgun/laserlong.wav" type="AudioStream" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=8]
 blend_mode = 1
@@ -32,3 +37,19 @@ antialiased = true
 texture = SubResource( 7 )
 polygon = PoolVector2Array( 0, -4, 0, -12, -32, -12, -25, -8, -32, -4 )
 uv = PoolVector2Array( 20, 0, 20, 0, 0, 0, 0, 0, 0, 0 )
+
+[node name="sound" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 3 )
+volume_db = 4.16
+
+[node name="soundlong" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 6 )
+
+[node name="soundreverb" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 4 )
+volume_db = 11.093
+
+[node name="shot" parent="." instance=ExtResource( 5 )]
+volume_db = 11.933
+pitch_scale = 0.4
+autoplay = false

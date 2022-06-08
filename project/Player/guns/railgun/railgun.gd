@@ -5,20 +5,35 @@ var bullet = preload ("res://Player/guns/railgun/shot/laser.tscn")
 var ready = true
 var charging = false
 var cooling = 0.04
+var soundbool = false 
 func _physics_process(delta):
+	$sound.global_position = global_position/4
+	$soundreverb.global_position = global_position/4
 	#Cooling
 	if $b1/heat.color.a >0.0 and !charging:
 		$b1/heat.color.a-=cooling * delta* Global.Player.CoolingSpeed
 		ready = false
 	elif !charging:
 		ready = true
+		$sound.seek(0.0)
+	
+	if ready and charging:
+		if !soundbool:
+			$sound.play(0.0)
+			soundbool = true
+		
+		
+	
 	#Repositioning
 	if $b1.position.x>2:
 		$b1.position.x-=0.4
 func shoot(dmg,bulvel,expl,sc,explsc):
 	# Heat, position (graphics)
 	if ready:
-		
+		$soundreverb.play(0.0)
+		$shot.play(0)
+		$soundlong.stop()
+		soundbool = false
 		Global.texturerect.get_material().set_shader_param("offset",0.0015 * dmg/Global.Player.dmg)
 		
 		$b1.position.x=8 

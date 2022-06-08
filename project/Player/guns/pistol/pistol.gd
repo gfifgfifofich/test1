@@ -6,6 +6,7 @@ var cooling = 0.5
 var ready = false
 var heatcolormult = 0.5
 func _physics_process(delta):
+	$shotsound.global_position = global_position/4
 	if $b1/heat.color.a >2.5*heatcolormult:
 		ready = false
 	if $b1/heat.color.a <=0.0:
@@ -26,6 +27,7 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 		shtpi.emitting=true
 		shtpi.rotation = Global.Player.LookDir
 		Global.main.spawninst(shtpi)
+		$shotsound.play(0.0)
 		
 		#shoot
 		var spr = Vector2(rand_range(10,-10),rand_range(10,-10))

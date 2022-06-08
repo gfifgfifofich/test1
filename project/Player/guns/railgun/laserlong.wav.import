@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/laserlong.wav-ec1a59d05c7d7cc0a94565067d5be2cf.sample"
+
+[deps]
+
+source_file="res://Player/guns/railgun/laserlong.wav"
+dest_files=[ "res://.import/laserlong.wav-ec1a59d05c7d7cc0a94565067d5be2cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
