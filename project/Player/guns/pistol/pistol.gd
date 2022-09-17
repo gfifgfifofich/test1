@@ -5,6 +5,7 @@ var bullet = preload ("res://bullet/bullet.tscn")
 var cooling = 0.5
 var ready = false
 var heatcolormult = 0.5
+export var HeatOfBullet =0.1
 func _physics_process(delta):
 	$shotsound.global_position = global_position/4
 	if $b1/heat.color.a >2.5*heatcolormult:
@@ -40,5 +41,6 @@ func shoot(dmg,bulvel,expl,sc,explsc):
 			mult = 1.25
 			bi.boom=true
 		bi.dmg=(dmg)
+		bi.heat=HeatOfBullet;
 		bi.position=$b1/bn.global_position
 		Global.main.spawninst(bi)

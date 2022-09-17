@@ -24,6 +24,8 @@ func _ready():
 			found = true
 		else:
 			parent = parent.get_parent()
+			parent.PartsCount+=1;
+			
 	
 func _physics_process(delta):
 	if parent.hp<=0:
@@ -33,6 +35,9 @@ func _physics_process(delta):
 		heat = maxheat
 	if heat >0:
 		heat -= cooling * delta
+	
+	parent.TotalHeat+=heat
+	
 	var heatcolor = (heat/maxheat) * colmult * colormult
 	$Polygon2D.color.r= minr + heatcolor
 	$Polygon2D.color.g= ming + heatcolor/2

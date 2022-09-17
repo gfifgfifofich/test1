@@ -17,27 +17,30 @@ var velocity = Vector2(0,0)
 var heat = 0
 var maxheat = 2.0
 export var stockcoolingspeed = 0.1
-var coolingspeed = 0.1
-var minr
-var ming
+var coolingspeed = 0.05
 var colmult = 1
-var radiatorCount = 0
+
+var PartsCount=0
+var TotalHeat = 0
 
 func _ready():
-	minr = $Polygon2D.color.r
-	ming = $Polygon2D.color.g
-	colmult = minr
 	linear_velocity = (Global.Player.position - position).normalized()*speed * 10
 	
 func _physics_process(delta):
 	
-	coolingspeed = stockcoolingspeed + (0.5 * radiatorCount)
-	if heat > maxheat/7:
-		heat = maxheat/7
+	
+	
+	if heat > maxheat:
+		heat = maxheat
 	if heat >0:
 		heat -= coolingspeed * delta
-	$Polygon2D.color.r= minr + heat/maxheat * colmult * 1.8
-	$Polygon2D.color.g= ming + heat/maxheat / 2 * colmult * 1.8
+	if heat <0:
+		heat = 0
+	
+	TotalHeat = heat
+	TotalHeat =TotalHeat/(PartsCount+1)
+	
+	$core/Polygon2D.color.a= (heat * colmult)/maxheat
 	
 	acceleration = (Global.Player.position - position).normalized()*speed
 	applied_torque = get_angle_to(linear_velocity+global_position) * 20

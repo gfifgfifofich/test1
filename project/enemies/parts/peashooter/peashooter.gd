@@ -23,6 +23,9 @@ func _ready():
 			found = true
 		else:
 			parent = parent.get_parent()
+			parent.PartsCount+=1;
+			
+
 func _physics_process(delta):
 	cooling = parent.coolingspeed * coolingmult
 	if heat >2.0:
@@ -35,6 +38,9 @@ func _physics_process(delta):
 		heat-=cooling * delta
 	if heat>2:
 		heat-=0.4
+	
+	parent.TotalHeat+=heat
+	
 	$b1/heat.color.a = heat * alphamult
 
 

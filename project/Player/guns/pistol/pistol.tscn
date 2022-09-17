@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/guns/pistol/pistol.gd" type="Script" id=1]
 [ext_resource path="res://Player/guns/pistol/shot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/textures/gun/pistol/Pistol.png" type="Texture" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=8]
 blend_mode = 1
@@ -23,9 +24,9 @@ max_distance = 6027.0
 
 [node name="b1" type="Polygon2D" parent="."]
 position = Vector2( 0, 8 )
-color = Color( 0.643137, 0.643137, 0.643137, 1 )
+texture = ExtResource( 3 )
 polygon = PoolVector2Array( 0, -4, 0, -12, -32, -12, -32, -4 )
-uv = PoolVector2Array( 20, 0, 20, 0, 0, 0, 0, 0 )
+uv = PoolVector2Array( 11.6875, -0.0163746, 52.1045, -0.0380249, 52.0804, 127.86, 11.9972, 128.068 )
 
 [node name="bn" type="Node2D" parent="b1"]
 position = Vector2( -32, -8 )

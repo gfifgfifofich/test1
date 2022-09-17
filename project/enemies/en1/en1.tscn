@@ -1,44 +1,67 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://enemies/en1/en1.gd" type="Script" id=1]
-[ext_resource path="res://enemies/parts/shield_1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/parts/weapbase/wepbase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Decorative/IK leg.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/parts/peashooter/peashooter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Decorative/core/core.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.6667
 
 [node name="en1" type="KinematicBody2D" groups=["enemies"]]
 scale = Vector2( 0.75, 0.75 )
 collision_layer = 5
 script = ExtResource( 1 )
-hp = 5
+hp = 25
+stockcoolingspeed = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 539
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 1, 0.117647, 0, 1 )
-polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
+[node name="core" parent="." instance=ExtResource( 6 )]
+frame = 0
 
-[node name="shield" parent="." instance=ExtResource( 2 )]
-position = Vector2( -9.33333, 0 )
-rotation = -1.5708
-scale = Vector2( 0.311, 2.047 )
-hp = 10
-
-[node name="shield2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 9.33333, 0 )
+[node name="IK leg6" parent="." instance=ExtResource( 3 )]
+position = Vector2( -9.33333, 10.6667 )
 rotation = 1.5708
-scale = Vector2( 0.311, 2.047 )
+scale = Vector2( 0.3, 0.3 )
+z_index = -1
+LegTarget = Vector2( 70, 20 )
+ReversTarget = Vector2( -70, 20 )
+LegPositionRandomness = 20
+
+[node name="IK leg5" parent="." instance=ExtResource( 3 )]
+position = Vector2( -9.33333, -9.33333 )
+rotation = -1.5708
+scale = Vector2( 0.3, 0.3 )
+z_index = -1
+LegPositionRandomness = 20
+mirored = true
+
+[node name="IK leg7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 10.6667, 10.6667 )
+rotation = 1.5708
+scale = Vector2( 0.3, 0.3 )
+z_index = -1
+LegTarget = Vector2( 70, 20 )
+ReversTarget = Vector2( -70, 20 )
+LegPositionRandomness = 20
+
+[node name="IK leg8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 10.6667, -9.33333 )
+rotation = -1.5708
+scale = Vector2( 0.3, 0.3 )
+z_index = -1
+LegPositionRandomness = 20
+mirored = true
+
+[node name="wepbase2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 1.90735e-06 )
 hp = 10
 
-[node name="shield3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 9.33333 )
-rotation = -3.14606
-scale = Vector2( 0.311, 2.047 )
-hp = 10
-
-[node name="shield4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2.79397e-09, -9.33333 )
-rotation = -0.00446498
-scale = Vector2( 0.311, 2.047 )
-hp = 10
+[node name="peashooter" parent="wepbase2" instance=ExtResource( 4 )]
+position = Vector2( 0, 4.76837e-07 )
+scale = Vector2( 0.75, 0.75 )
+hp = 15

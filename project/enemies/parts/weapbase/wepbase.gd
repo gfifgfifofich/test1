@@ -28,12 +28,18 @@ func _ready():
 			found = true
 		else:
 			parent = parent.get_parent()
+			parent.PartsCount+=1;
+			
+
 func _physics_process(delta):
 	cooling = parent.coolingspeed * coolingmult
 	if heat > maxheat/2.5:
 		heat = maxheat/2.5
 	if heat > 0:
 		heat -= cooling * delta
+	
+	parent.TotalHeat+=heat
+	
 	$Polygon2D.color.r= minr + (heat/maxheat * colmult * 1.8) * colormult
 	$Polygon2D.color.g= ming + (heat/maxheat / 2 * colmult * 1.8) * colormult
 	t+=delta
@@ -41,7 +47,7 @@ func _physics_process(delta):
 		if t >= parent.frate:
 			t=0
 			for i in range(0,get_child_count(),1):
-				if get_child(i).name !="CollisionShape2D" and get_child(i).name !="Polygon2D" and get_child(i).name !="shield":
+				if get_child(i).is_in_group("guns"):
 					get_child(i).shoot(parent.dmg,parent.bvel,parent.expl,parent.bscale,parent.explscale)
 	rotation = 0
 	rotation = get_angle_to(Global.Player.position)

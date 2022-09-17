@@ -6,7 +6,7 @@ var t =10.0
 var hp=50.0
 var maxhp=50.0
 var speed = 1
-var frate = float(6.0/15.0)
+var frate = float(6.0/150.0)
 var dmg =1
 var explscale = Vector2(4,4)
 var bulvel = 500
@@ -28,7 +28,7 @@ var colcount = 0
 var colbodarr = []#
 
 
-var CoolingSpeed = 1.0
+var CoolingSpeed = 200.0
 var heatlevel = [0,0,0,0,0]# heat level of every gun
 
 var dasht = 0 # duration of dash
@@ -58,9 +58,6 @@ func _physics_process(delta):
 			pist = false
 		$wepbase.rotation = get_angle_to(get_global_mouse_position())+deg2rad(180)
 		LookDir = get_angle_to(get_global_mouse_position())+deg2rad(180)
-		$Polygon2D.color.r8 = sm[0]
-		$Polygon2D.color.g8= sm[1]
-		$Polygon2D.color.b8 = sm[2]
 		#movement
 		if !walking:
 			if Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
@@ -89,6 +86,8 @@ func _physics_process(delta):
 			if not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"):
 				velocity.y=0
 		
+		
+		
 		if Input.is_action_just_pressed("shift") and dashcd <=0:
 			dasht+=0.2
 			dashcd+=0.5
@@ -98,7 +97,10 @@ func _physics_process(delta):
 		else:
 			dasht = 0
 		dashcd-=delta
-		
+		if velocity.x!=0 or velocity.y!=0:
+			$AnimatedSprite.playing = true
+		else:
+			$AnimatedSprite.playing = false
 		#shooting
 		$wepbase/pistol.visible=pist
 		$wepbase/railgun.visible=!pist
@@ -134,7 +136,7 @@ func _physics_process(delta):
 						railcharge = min (railcharge, 5)
 						$wepbase/railgun/b1/heat.color.a=railcharge/5
 		
-		if railcharge>0 and !Input.is_action_pressed("lmb") and !pist:
+		if railcharge>=5.0  and !pist:#and !Input.is_action_pressed("lmb")
 			$wepbase/railgun/b1/heat.color.a=railcharge/5
 			$wepbase/railgun.shoot(dmg * railcharge * raildmgmult,bulvel,false,Vector2(1.5,railcharge/3),Vector2(10,5))
 			$wepbase/railgun.ready = false
@@ -145,14 +147,14 @@ func _physics_process(delta):
 			$wepbase/pistol/pistol1.cooling = 0.5
 			$wepbase/pistol/pistol2.cooling = 0.5
 		
-		if !velocity==Vector2(0,0) and $Polygon2D.scale.y>0.8:
-			$Polygon2D.scale.y-=0.02
+		if !velocity==Vector2(0,0) and $AnimatedSprite.scale.y>0.75:
+			$AnimatedSprite.scale.y-=0.02
 			$CollisionShape2D.scale.y-=0.02
 			$Area2D.scale.y-=0.02
-		if velocity == Vector2(0,0) and $Polygon2D.scale.y<1.0:
-			$Polygon2D.scale.y+=0.02
+		if velocity == Vector2(0,0) and $AnimatedSprite.scale.y<0.85:
+			$AnimatedSprite.scale.y+=0.02
 			$CollisionShape2D.scale.y+=0.02
-			$Area2D.scale.y+=0.02
+			$AnimatedSprite.scale.y+=0.02
 		pr= rotation
 		rotation=0
 		rotation = get_angle_to(position+velocity)
